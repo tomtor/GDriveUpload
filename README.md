@@ -8,8 +8,7 @@ usage:
 
 1) Create a directory 'Dumps' in your GDrive root.
 
-   Uploaded files will be placed in in directory.
-
+   Uploaded files will be placed in this directory.
 
 2) Enter
 
@@ -17,7 +16,6 @@ usage:
 
    This will ask for your credentials and upload the file to 'Dumps'.
    Directory separators are replaced by '|'
-
 
 3) If you want to save your credentials in your working directory then
    rename '_settings.yaml' to 'settings.yaml'. On your next upload
@@ -33,5 +31,4 @@ usage:
    Copy '_settings.yaml' to 'settings.yaml' in this directory.
    Also copy the 'client_secrets.json' and 'credentials.json' from
    your working directory. Now you can run 'upload.py' from any directory.
-
 ```
