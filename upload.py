@@ -12,8 +12,9 @@ from pydrive.drive import GoogleDrive
 from pydrive.settings import LoadSettingsFile
 
 home_upload= home + os.sep + ".upload.py" + os.sep
-os.chdir(home_upload)
-LoadSettingsFile(home_upload + "settings.yaml")
+
+if os.path.exists(home_upload):
+    os.chdir(home_upload)
 
 gauth = GoogleAuth()
 gauth.LocalWebserverAuth()
