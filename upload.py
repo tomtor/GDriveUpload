@@ -17,7 +17,8 @@ if os.path.exists(home_upload):
     os.chdir(home_upload)
 
 gauth = GoogleAuth()
-gauth.LocalWebserverAuth()
+#gauth.LocalWebserverAuth()
+gauth.CommandLineAuth()
 
 drive = GoogleDrive(gauth)
 os.chdir(cwd)
