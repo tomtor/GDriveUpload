@@ -6,6 +6,10 @@ Simple python script to upload a single file to Google Drive
 ```
 usage:
 
+0) Install PyDrive:
+
+   https://github.com/googledrive/PyDrive
+
 1) Create a directory 'Dumps' in your GDrive root.
 
    Uploaded files will be placed in this directory.
