@@ -7,6 +7,6 @@ dump -0 -f - /home/tom/src | gzip -c | split -b 100M - /media/scratch/dump/swan-
 dump -0 -f - /home/tom/bin | gzip -c | split -b 100M - /media/scratch/dump/swan-bin.dump.gz.
 dump -0 -f - /home/tom/Desktop | gzip -c | split -b 100M - /media/scratch/dump/swan-desktop.dump.gz.
 
-bupload.sh /media/scratch/dump/*dump*
+bupload.sh "etc-src-bin-desktop" /media/scratch/dump/*dump*
 
 echo Done: ; date
