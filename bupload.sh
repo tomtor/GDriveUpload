@@ -1,7 +1,7 @@
 for i in "$@"
 do
   while true; do
-    if upload.py "$i";
+    if upload.py -v "$i";
     then
       break
     else
