@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+from __future__ import print_function
+
 import sys
 import os
 
@@ -20,6 +22,10 @@ parser.add_option("-d", "--destination", dest="destination", metavar="DEST",
 
 (options, args) = parser.parse_args()
 
+if len(args) == 0:
+    print('No file specified', file= sys.stderr)
+    sys.exit(2)
+
 home = expanduser("~")
 cwd= os.getcwd()
 
@@ -36,15 +42,21 @@ drive = GoogleDrive(gauth)
 os.chdir(cwd)
 
 file_list = drive.ListFile({'q': "title='" + options.destination + "'"}).GetList()
+if len(file_list) == 0:
+    print('Google Drive destination not found: ' + options.destination, file= sys.stderr)
+    sys.exit(2)
 
 parent = drive.CreateFile({'id': file_list[0]['id']})
-file1 = drive.CreateFile()
-file1['title']= args[0].replace(os.sep, '|')
-file1['parents']= [parent]
-file1.SetContentFile(args[0])
+
+for f in args:
+    file = drive.CreateFile()
+    file['title']= f.replace(os.sep, '|')
+    file['parents']= [parent]
+    file.SetContentFile(args[0])
+
+    if options.verbose:
+        print("Start upload of " + file['title'] + " to dir '" + options.destination + "'")
+    file.Upload()
 
 if options.verbose:
-  print "Start upload of " + file1['title'] + " to dir '" + options.destination + "'"
-file1.Upload()
-if options.verbose:
-  print "Done"
+        print("Done")
